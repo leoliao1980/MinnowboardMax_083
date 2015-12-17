@@ -111,9 +111,16 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 //
 #pragma warning ( disable : 4703 )
 
-#endif
+#if _MSC_VER == 1900
+//
+// This warning is for declaration of variable hides its global declaration, and it may
+// cause false positive issues in VS2015 build
+//
+#pragma warning ( disable : 4459 )
+#endif // #if _MSC_VER == 1900
+#endif // #if _MSC_VER == 1800 || _MSC_VER == 1900
 
-#endif
+#endif // #if defined(_MSC_EXTENSIONS)
 
 
 #if defined(_MSC_EXTENSIONS)
