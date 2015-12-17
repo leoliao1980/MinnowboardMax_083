@@ -26,6 +26,7 @@ set Arch=X64
 set PLATFORM_PACKAGE=Vlv2TbltDevicePkg
 set ROOT_DIR=%CD%
 
+if /i "%1"=="/c" goto CleanAll
 :: Parse Optional arguments
 :OptLoop
 if /i "%~1"=="/?" goto Usage
@@ -168,6 +169,20 @@ echo        IFWI Suffix:      Suffix to append to end of IFWI filename (default:
 echo.
 echo        See  Stitch/Stitch_Config.txt  for additional stitching settings.
 echo.
+set exitCode=1
+
+:CleanAll
+:: Clean up build folder
+echo ======================================================================
+echo Removing previous build files ...
+if exist build (
+    del /f/s/q build > null
+    rmdir /s/q build
+)
+if exist conf\.cache (
+    del /f/s/q conf\.cache > null
+    rmdir /s/q conf\.cache
+)
 set exitCode=1
 
 :Exit
