@@ -1,0 +1,19 @@
+***************
+*** 396,401 ****
+      BIO_free_all(p7bio);
+  
+      sk_X509_free(signers);
+  
+      return ret;
+  }
+--- 402,411 ----
+      BIO_free_all(p7bio);
+  
+      sk_X509_free(signers);
++ 
++     if (buf != NULL) {
++       OPENSSL_free(buf);
++     }
+  
+      return ret;
+  }
