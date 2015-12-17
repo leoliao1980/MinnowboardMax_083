@@ -591,8 +591,8 @@ endif;     // grayoutif NOT ideqval Setup.LpssSdcardEnabled == 0x1;
   oneof varid   = Setup.LpssHsuart1FlowControlEnabled,
     prompt      = STRING_TOKEN(STR_LPSS_HSUART2_FLOWCONTROL_PROMPT),
     help        = STRING_TOKEN(STR_LPSS_HSUART1_HELP_ENBDT_DEV_LIST),
-    option text = STRING_TOKEN(STR_DISABLE), value=0, flags=0 |DEFAULT | RESET_REQUIRED;
-    option text = STRING_TOKEN(STR_ENABLE), value=1, flags= MANUFACTURING  | RESET_REQUIRED;
+    option text = STRING_TOKEN(STR_DISABLE), value=0, flags=MANUFACTURING | RESET_REQUIRED;
+    option text = STRING_TOKEN(STR_ENABLE), value=1, flags= 0 | DEFAULT | RESET_REQUIRED;
   endoneof;
   endif;
 
@@ -601,8 +601,8 @@ endif;     // grayoutif NOT ideqval Setup.LpssSdcardEnabled == 0x1;
   oneof varid   = Setup.LpssPwm0Enabled,
     prompt      = STRING_TOKEN(STR_PWM1_PROMPT),
     help        = STRING_TOKEN(STR_PWM1_HELP),
-    option text = STRING_TOKEN(STR_DISABLE), value=0, flags=MANUFACTURING  | RESET_REQUIRED;
-    option text = STRING_TOKEN(STR_ENABLE), value=1, flags= 0 | DEFAULT | RESET_REQUIRED;
+    option text = STRING_TOKEN(STR_DISABLE), value=0, flags= 0 | DEFAULT | RESET_REQUIRED;
+    option text = STRING_TOKEN(STR_ENABLE), value=1, flags= MANUFACTURING | RESET_REQUIRED;
   endoneof;
   endif;
 
@@ -610,8 +610,8 @@ endif;     // grayoutif NOT ideqval Setup.LpssSdcardEnabled == 0x1;
   oneof varid   = Setup.LpssPwm1Enabled,
     prompt      = STRING_TOKEN(STR_PWM2_PROMPT),
     help        = STRING_TOKEN(STR_PWM2_HELP),
-    option text = STRING_TOKEN(STR_DISABLE), value=0, flags=MANUFACTURING  | RESET_REQUIRED;
-    option text = STRING_TOKEN(STR_ENABLE), value=1, flags= 0 | DEFAULT | RESET_REQUIRED;
+    option text = STRING_TOKEN(STR_DISABLE), value=0, flags= 0 | DEFAULT | RESET_REQUIRED;
+    option text = STRING_TOKEN(STR_ENABLE), value=1, flags= MANUFACTURING | RESET_REQUIRED;
   endoneof;
   endif;
 
