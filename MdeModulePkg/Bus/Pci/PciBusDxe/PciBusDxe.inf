@@ -110,3 +110,13 @@
 
 [UserExtensions.TianoCore."ExtraFiles"]
   PciBusDxeExtra.uni
+
+[BuildOptions]
+   #
+   # Override MSFT build option to remove /O1ib2 (to silence warning messages when building PciBusDxe).
+   #
+   MSFT:DEBUG_*_IA32_CC_FLAGS   == /nologo /arch:IA32 /c /WX /GS- /W3 /Gs32768 /D UNICODE /GL /FIAutoGen.h /EHs-c- /GR- /GF /Gy /Zi /Gm
+   MSFT:RELEASE_*_IA32_CC_FLAGS == /nologo /arch:IA32 /c /WX /GS- /W3 /Gs32768 /D UNICODE /GL /FIAutoGen.h /EHs-c- /GR- /GF/Gm
+   MSFT:DEBUG_*_X64_CC_FLAGS    == /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /GL /Gy /FIAutoGen.h /EHs-c- /GR- /GF /Zi /Gm
+   MSFT:RELEASE_*_X64_CC_FLAGS  == /nologo /c /WX /GS- /W4 /Gs32768 /D UNICODE /GL /Gy /FIAutoGen.h /EHs-c- /GR- /GF
+
