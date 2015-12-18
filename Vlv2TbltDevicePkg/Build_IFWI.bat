@@ -26,7 +26,7 @@ set Arch=X64
 set PLATFORM_PACKAGE=Vlv2TbltDevicePkg
 set ROOT_DIR=%CD%
 
-if /i "%1"=="/c" goto CleanAll
+if /i "%1"=="/clean" goto CleanAll
 :: Parse Optional arguments
 :OptLoop
 if /i "%~1"=="/?" goto Usage
@@ -68,6 +68,12 @@ if /i "%~1"=="/x64" (
 if /i "%~1"=="/IA32" (
     set Arch=IA32
     set Build_Flags=%Build_Flags% /IA32
+    shift
+    goto OptLoop
+)
+
+if /i "%~1"=="/vs2015" (
+    set Build_Flags=%Build_Flags% /vs2015
     shift
     goto OptLoop
 )
@@ -152,16 +158,18 @@ echo Script to build BIOS firmware and stitch the entire IFWI.
 echo.
 echo Usage: Build_IFWI.bat [options]  PlatformType  BuildTarget  [IFWI Suffix]
 echo.
-echo        /q     Quiet mode. Only display Fatal Errors (slightly faster)
-echo        /l     Log a copy of the build output to EDK2.log
-echo        /c     CleanAll before building
-echo        /ecp   ECP build enable
-echo        /src   Build silicon source code (default binary)
-echo        /x64   Set Arch to X64  (default: X64)
-echo        /IA32  Set Arch to IA32 (default: X64)
-echo        /nG    Do NOT update the GOP driver when stitching (ie keep src version)
-echo        /nM    Do NOT update the Microcode when stitching  (ie keep src version)
-echo        /nB    Do NOT create a backup of BIOS.ROM before modifying it for Stitch
+echo        /clean  Clean all for now
+echo        /q      Quiet mode. Only display Fatal Errors (slightly faster)
+echo        /l      Log a copy of the build output to EDK2.log
+echo        /c      CleanAll before building
+echo        /ecp    ECP build enable
+echo        /src    Build silicon source code (default binary)
+echo        /x64    Set Arch to X64  (default: X64)
+echo        /IA32   Set Arch to IA32 (default: X64)
+echo        /vs2015 Force to complier this build by VS2015
+echo        /nG     Do NOT update the GOP driver when stitching (ie keep src version)20
+echo        /nM     Do NOT update the Microcode when stitching  (ie keep src version)
+echo        /nB     Do NOT create a backup of BIOS.ROM before modifying it for Stitch
 echo. 
 echo        Platform Types:   MNW2
 echo        Build Targets:    Release, Debug

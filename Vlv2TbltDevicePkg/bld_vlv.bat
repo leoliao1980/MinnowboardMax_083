@@ -91,6 +91,15 @@ if /i "%~1"=="/IA32" (
     goto OptLoop
 )
 
+if /i "%~1"=="/vs2015" (
+    set VS90COMNTOOLS=
+    set VS100COMNTOOLS=
+    set VS110COMNTOOLS=
+    set VS120COMNTOOLS=
+    shift
+    goto OptLoop
+)
+
 :: Required argument(s)
 if "%~1"=="" goto Usage
 
